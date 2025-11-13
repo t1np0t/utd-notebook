@@ -9,18 +9,18 @@ export async function GET(req: Request) {
     const query = searchParams.get('q') || '';
     // console.log(query);
 
-    /*
+    if (!query) {
+      return NextResponse.json(
+        { error: 'Missing search query parameter "q"' },
+        { status: 400 }
+      );
+    }
+
     const files = await db.query.file.findMany({
         where: (file) => 
             ilike(file.fileTitle, `%${query}%`)
     });
-    */
-
-    const files = await db
-    .select()
-    .from(file)
-    .where(ilike(file.fileTitle, `%${query}%`));
-
+    
     return NextResponse.json(
         { message: `Search: ${query}`, data: files},
         { status: 201 }
