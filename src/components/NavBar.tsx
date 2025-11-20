@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IconButton, Tooltip } from '@mui/material';
+import SearchBar from '@components/SearchBar'
 
 export default function NavBar() {
   return (
@@ -20,6 +21,8 @@ export default function NavBar() {
         >
           UTD Notebook
         </Link>
+
+        <SearchBar />
 
         <div className="ml-auto flex items-center gap-x-2 md:gap-x-4">
           <Tooltip title="Profile">
